@@ -114,8 +114,9 @@ $ nano firewall.rules
 $ chmod +x firewall.rules
 $ ./firewall.rules
 $ sudo apt-get install fail2ban
-$ sudo iptables-save > /etc/iptables/rules.v4
-$ sudo reboot
+$ sudo bash
+# iptables-save > /etc/iptables/rules.v4
+# reboot
 ```
 
 Install/Setup Golang
