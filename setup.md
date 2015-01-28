@@ -115,11 +115,13 @@ $ chmod +x firewall.rules
 $ ./firewall.rules
 $ sudo apt-get install fail2ban
 $ sudo iptables-save > /etc/iptables/rules.v4
+$ sudo reboot
 ```
 
 Install/Setup Golang
 --------------------
 ```
+$ sudo apt-get install mercurial gcc g++ # need these for some go packages
 $ wget "https://storage.googleapis.com/golang/GO_PACKAGE.tar.gz"
 $ sudo tar -C /usr/local -xzf GO_PACKAGE.tar.gz
 $ mkdir ~/go
