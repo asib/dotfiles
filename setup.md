@@ -107,10 +107,44 @@ $ sudo apt-get install iptables-persistent
 ```
 $ nano firewall.rules
 ```
+**Be sure to modify the line with the comment `# sshd` so that the dest port is 2272 (as set earlier in sshd_config**
+
 **Paste and save**
 ```
 $ chmod +x firewall.rules
 $ ./firewall.rules
 $ sudo apt-get install fail2ban
 $ sudo iptables-save > /etc/iptables/rules.v4
+```
+
+Install/Setup Golang
+--------------------
+```
+$ wget "https://storage.googleapis.com/golang/GO_PACKAGE.tar.gz"
+$ sudo tar -C /usr/local -xzf GO_PACKAGE.tar.gz
+$ mkdir ~/go
+$ vi ~/.bashrc
+```
+**Ensure:**
+```
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+```
+
+Install/Setup Haskell
+---------------------
+```
+$ sudo apt-get install haskell-platform
+$ vi ~/.ghc/ghci.conf
+```
+**Add the line**
+```
+:set prompt "λ: "
+```
+
+Install tmux
+------------
+```
+$ sudo apt-get install tmux
 ```
