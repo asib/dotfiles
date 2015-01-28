@@ -30,7 +30,8 @@ let g:go_highlight_structs = 1
 " Install tagbar plugin
 " $ cd ~/.vim/bundle
 " $ git clone https://github.com/majutsushi/tagbar.git
-let g:tagbar_type_go = {  
+let g:tagbar_autofocus = 1
+let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
         \ 'p:package',
@@ -65,7 +66,17 @@ nmap <F8> :TagbarToggle<CR>
 " $ git clone https://github.com/scrooloose/nerdtree.git
 map <C-n> :NERDTreeToggle<CR>
 
-map <C-b> :GoBuild<CR>
+" FIXWHITESPACE
+" $ cd ~/.vim/bundle
+" $ git clone https://github.com/bronson/vim-trailing-whitespace
+" :FixWhitespace to fix
+map <F9> :FixWhitespace<CR>
+
+" NERDCommenter
+" $ cd ~/.vim/bundle
+" $ git clone https://github.com/scrooloose/nerdcommenter
+let NERDSpaceDelims=1
+
 nmap <F5> :GoRun<CR>
 
 set autoindent
@@ -74,5 +85,6 @@ set softtabstop=4
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set foldmethod=indent
-set foldnestmax=1
+set foldmethod=syntax
+set noswapfile
+set nocompatible
