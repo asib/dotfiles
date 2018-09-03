@@ -1,35 +1,46 @@
-" Install Pathogen
-" "http://www.vim.org/scripts/script.php?script_id=2332"
-" Unzip pathogen.zip, then $ mv ./autoload ~/.vim/
+call plug#begin()
+Plug 'elmcast/elm-vim'
+call plug#end()
+
 call pathogen#infect()
 
-" MOLOKAI THEME
-" $ mkdir ~/.vim/colors
-" $ cd !$
-" $ wget "https://raw.githubusercontent.com/fatih/molokai/master/colors/molokai.vim"
-set t_Co=256
-colorscheme molokai
+set clipboard=unnamed
 
-" VIM-GO PLUGIN
-" $ mkdir ~/.vim/bundle
-" $ cd !$
-" git clone https://github.com/fatih/vim-go.git
+colorscheme molokai
+set t_Co=256
 syntax enable
+filetype on
 filetype plugin on
+filetype plugin indent on
 set number
+set autoindent
+set cindent
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set foldmethod=syntax
+set noswapfile
+set nocompatible
+set cc=80
+set laststatus=2
+set ruler
+set backspace=indent,eol,start
+
+let g:vim_annotations_offset = '/.liquid/'
+
+let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_haskell_checkers = ['hdevtools', 'hlint', 'liquid']
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+let g:jsx_ext_required = 0
+
 let g:go_disable_autoinstall = 0
+let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
-" TAGBAR
-" Install ctags
-" $ sudo apt-get install ctags
-" Install go parser
-" $ go get -u github.com/jstemmer/gotags
-" Install tagbar plugin
-" $ cd ~/.vim/bundle
-" $ git clone https://github.com/majutsushi/tagbar.git
 let g:tagbar_autofocus = 1
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -60,31 +71,30 @@ let g:tagbar_type_go = {
 \ }
 
 nmap <F8> :TagbarToggle<CR>
-
-" Install nerdtree file browser
-" $ cd ~/.vim/bundle
-" $ git clone https://github.com/scrooloose/nerdtree.git
 map <C-n> :NERDTreeToggle<CR>
-
-" FIXWHITESPACE
-" $ cd ~/.vim/bundle
-" $ git clone https://github.com/bronson/vim-trailing-whitespace
-" :FixWhitespace to fix
 map <F9> :FixWhitespace<CR>
 
-" NERDCommenter
-" $ cd ~/.vim/bundle
-" $ git clone https://github.com/scrooloose/nerdcommenter
-let NERDSpaceDelims=1
+"map <C-b> :GoBuild<CR>
+"nmap <F5> :GoRun<CR>
 
-nmap <F5> :GoRun<CR>
-
-set autoindent
-set cindent
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set foldmethod=syntax
-set noswapfile
-set nocompatible
+if (&tildeop)
+  nmap gcw guw~l
+  nmap gcW guW~l
+  nmap gciw guiw~l
+  nmap gciW guiW~l
+  nmap gcis guis~l
+  nmap gc$ gu$~l
+  nmap gcgc guu~l
+  nmap gcc guu~l
+  vmap gc gu~l
+else
+  nmap gcw guw~h
+  nmap gcW guW~h
+  nmap gciw guiw~h
+  nmap gciW guiW~h
+  nmap gcis guis~h
+  nmap gc$ gu$~h
+  nmap gcgc guu~h
+  nmap gcc guu~h
+  vmap gc gu~h
+endif
